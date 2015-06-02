@@ -4,11 +4,17 @@
 Nivel::Nivel()
 {
 }
-
-Nivel::Nivel(int ancho, int alto, int soles, std::vector<VampiroEnEspera>& spawninglist)
-{
-}
 */
+Nivel::Nivel(int ancho, int alto, int soles, std::vector<VampiroEnEspera>& spawninglist) {
+    _ancho = ancho;
+    _alto = alto;
+    _soles = soles;
+    _spawning = spawninglist;
+    _turno = 0;
+    _vampiros.clear();
+    _flores.clear();
+}
+
 int Nivel::anchoN()
 {
     return this->_ancho;
@@ -43,11 +49,15 @@ std::vector<VampiroEnEspera>& Nivel::spawningN()
 {
     return this->_spawning;
 }
-/*
-void Nivel::agregarFlor(Flor f, Posicion p)
-{
-}
 
+void Nivel::agregarFlor(Flor f, Posicion p) {
+    std::vector<FlorEnJuego> fEnJuego = floresN();
+    fEnJuego.push_back(FlorEnJuego(f,p,f.vidaF()));
+    _flores = fEnJuego;
+    double cantH = f.habilidadesF().size();
+    _soles = solesN() - pow(2.0, cantH);
+}
+/*
 void Nivel::pasarTurno()
 {
 }
