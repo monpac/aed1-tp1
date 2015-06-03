@@ -62,16 +62,32 @@ void Nivel::pasarTurno()
 {
 }
 */
-bool Nivel::terminado()
-{
-    if ((this->_vampiros.size() == 0 && this->_spawning.size() == 0) /*|| vampirosEnCasa*/) {
-        return true;
-    } else {
-        return false;
+bool vampirosEnCasa(std::vector<VampiroEnJuego> vs) {
+    int i = 0;
+    int tamano = vs.size();
+    bool b = false;
+    while(i < tamano && b == false) {
+        if(vs.at(i).pos.y == 0) {
+            b = true;
+        } else {
+            b = false;
+        }
+        i++;
     }
+    return b;
 }
-/*
 
+bool Nivel::terminado() {
+    bool b;
+    if ((vampirosN().size() == 0 && spawningN().size() == 0) || vampirosEnCasa(vampirosN())) {
+        b = true;
+    } else {
+        b = false;
+    }
+    return b;
+}
+
+/*
 bool Nivel::obsesivoCompulsivo()
 {
 }
