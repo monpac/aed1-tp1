@@ -3,6 +3,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <math.h>
 
 #include "Flor.h"
 #include "Vampiro.h"

@@ -16,7 +16,7 @@ int Juego::nivelActual()
 
 void Juego::pasarNivel()
 {
-    _nivelActual + 1;
+    _nivelActual = nivelActual() + 1;
 }
 /*
 std::vector<Flor>& Juego::floresJ()

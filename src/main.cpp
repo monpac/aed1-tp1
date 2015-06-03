@@ -7,7 +7,6 @@ int main(){
 
   cout << " Trabajo practico Flores vs Vampiros" << endl;
 
-  /*
   vector<Habilidad> hab;
   hab.push_back(Atacar);
 
@@ -27,6 +26,7 @@ int main(){
 
   cout << v.vidaV() << ' ' << v.cuantoPegaV() << endl;
 
+
   vector<VampiroEnEspera> spawn;
   spawn.push_back(VampiroEnEspera(v,2,2));
 
@@ -37,7 +37,7 @@ int main(){
   n.agregarFlor(f, Posicion(2,2));
 
   cout << n.solesN() << endl;
-
+/*
   n.pasarTurno();
 
   cout << n.solesN() << endl;

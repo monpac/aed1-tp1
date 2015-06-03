@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1432669196 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.cpp
+1433276211 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.cpp
 	"Flor.h"
 
 1430937003 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.h
@@ -11,7 +11,7 @@
 1430937003 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Types.h
 	<tuple>
 
-1432669229 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
+1433277401 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
 	"Juego.h"
 
 1432239949 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.h
@@ -23,20 +23,28 @@
 	"Nivel.h"
 	"Types.h"
 
-1432668425 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Vampiro.h
+1433276513 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Vampiro.h
 	"Types.h"
 	<vector>
 	<iostream>
 	<string>
 
-1432258173 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.h
+1433278402 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.h
 	<tuple>
 	<vector>
 	<iostream>
 	<string>
+	<math.h>
 	"Flor.h"
 	"Vampiro.h"
 
-1432669209 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.cpp
+1433281860 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.cpp
 	"Nivel.h"
+
+1433282230 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/main.cpp
+	"Juego.h"
+	<iostream>
+
+1433282822 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Vampiro.cpp
+	"Vampiro.h"
 
