@@ -37,12 +37,12 @@ int main(){
   n.agregarFlor(f, Posicion(2,2));
 
   cout << n << endl;
-/*
-  n.pasarTurno();
 
-  cout << n.solesN() << endl;
+  //n.pasarTurno();
 
-  cout << n.terminado() << ' ' << n.obsesivoCompulsivo() << endl;
+  //cout << n.solesN() << endl;
+
+  //cout << n.terminado() << ' ' << n.obsesivoCompulsivo() << endl;
 
 
   vector<Flor> fs;
@@ -53,8 +53,9 @@ int main(){
 
   Juego j(fs,vs);
 
-  j.agregarNivel(n,0);
+    cout << j << endl;
 
-  cout << j.muyDeExactas() << endl;
-  */
+  //j.agregarNivel(n,0);
+
+  //cout << j.muyDeExactas() << endl;
 }

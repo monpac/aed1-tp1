@@ -64,9 +64,6 @@ private:
 
 
     friend std::ostream& operator<<(std::ostream& out, Nivel& n);
-    std::string fsToString();
-    std::string vsToString();
-    std::string spsToString();
 
 public:
 	Nivel();

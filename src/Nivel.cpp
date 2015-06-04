@@ -94,19 +94,43 @@ void Nivel::Cargar(std::istream& is)
 
 std::ostream& operator<<(std::ostream& out, Nivel& n) {
     out << "{ N " << n.anchoN() << " " << n.altoN() << " " << n.turnoN() << " "
-        << n.solesN() << " " << n.fsToString() << " " << n.vsToString() << " "
-        << n.spsToString() << " }";
+        << n.solesN() << " ";
+    // Flores
+    out << "[ ";
+    int i = 0;
+    while (i < n.floresN().size()) {
+        out << "( ";
+        out << n.floresN()[i].flor << " ";
+        out << "( " << n.floresN()[i].pos.x << " " << n.floresN()[i].pos.y << " ) ";
+        out << n.floresN()[i].vida << " ";
+        out << ") ";
+        i++;
+    }
+    out << "] ";
+    // Vampiros
+    out << "[ ";
+    i = 0;
+    while (i < n.vampirosN().size()) {
+        out << "( ";
+        out << n.vampirosN()[i].vampiro << " ";
+        out << "( " << n.vampirosN()[i].pos.x << " " << n.vampirosN()[i].pos.y << " ) ";
+        out << n.vampirosN()[i].vida << " ";
+        out << ") ";
+        i++;
+    }
+    out << "] ";
+    // Spawnings
+    out << "[ ";
+    i = 0;
+    while (i < n.spawningN().size()) {
+        out << "( ";
+        out << n.spawningN()[i].vampiro << " ";
+        out << n.spawningN()[i].fila << " ";
+        out << n.spawningN()[i].turno << " ";
+        out << ") ";
+        i++;
+    }
+    out << "] ";
+    out << "}";
     return out;
-}
-
-std::string Nivel::fsToString() {
-    return "[]";
-}
-
-std::string Nivel::vsToString() {
-    return "[]";
-}
-
-std::string Nivel::spsToString() {
-    return "[]";
 }
