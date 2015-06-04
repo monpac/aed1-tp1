@@ -28,7 +28,7 @@ int Vampiro::cuantoPegaV()
 }
 
 void Vampiro::Mostrar(std::ostream& os) {
-  os << claseV() << " " << vidaV() << " " << cuantoPegaV();
+  os << this;
 }
 
 void Vampiro::Guardar(std::ostream& os) {
@@ -44,3 +44,14 @@ void Vampiro::Cargar(std::istream& is) {
 
 }
 */
+
+std::ostream& operator<<(std::ostream& out, Vampiro& v) {
+    std::string clase = "";
+    if (v.claseV() == Caminante) {
+        clase = "Caminante ";
+    } else if (v.claseV() == Desviado) {
+        clase = "Desviado ";
+    }
+    out << "{ V " << clase << " " << v.vidaV() << " " << v.cuantoPegaV() << " }";
+    return out;
+}

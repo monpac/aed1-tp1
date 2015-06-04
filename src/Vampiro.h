@@ -12,6 +12,9 @@ private:
 	int _cuantoPega;
 	ClaseVampiro _clase;
 
+
+	friend std::ostream& operator<<(std::ostream& out, Vampiro& v);
+
 public:
 
 	Vampiro();
@@ -24,5 +27,4 @@ public:
 	void Mostrar(std::ostream& os);
 	void Guardar(std::ostream& os);
 	void Cargar(std::istream& is);
-
 };

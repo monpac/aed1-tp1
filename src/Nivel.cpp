@@ -107,3 +107,22 @@ void Nivel::Cargar(std::istream& is)
 {
 }
 */
+
+std::ostream& operator<<(std::ostream& out, Nivel& n) {
+    out << "{ N " << n.anchoN() << " " << n.altoN() << " " << n.turnoN() << " "
+        << n.solesN() << " " << n.fsToString() << " " << n.vsToString() << " "
+        << n.spsToString() << " }";
+    return out;
+}
+
+std::string Nivel::fsToString() {
+    return "[]";
+}
+
+std::string Nivel::vsToString() {
+    return "[]";
+}
+
+std::string Nivel::spsToString() {
+    return "[]";
+}

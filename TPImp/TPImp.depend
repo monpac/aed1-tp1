@@ -48,3 +48,52 @@
 1433282822 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Vampiro.cpp
 	"Vampiro.h"
 
+1433402099 source:/home/nico/Documents/College/AED1/TP1/src/Juego.cpp
+	"Juego.h"
+
+1433402099 /home/nico/Documents/College/AED1/TP1/src/Juego.h
+	<vector>
+	<iostream>
+	<fstream>
+	"Flor.h"
+	"Vampiro.h"
+	"Nivel.h"
+	"Types.h"
+
+1433406719 /home/nico/Documents/College/AED1/TP1/src/Flor.h
+	"Types.h"
+	<vector>
+	<iostream>
+	<string>
+
+1430937106 /home/nico/Documents/College/AED1/TP1/src/Types.h
+	<tuple>
+
+1433406623 /home/nico/Documents/College/AED1/TP1/src/Vampiro.h
+	"Types.h"
+	<vector>
+	<iostream>
+	<string>
+
+1433407909 /home/nico/Documents/College/AED1/TP1/src/Nivel.h
+	<tuple>
+	<vector>
+	<iostream>
+	<string>
+	<math.h>
+	"Flor.h"
+	"Vampiro.h"
+
+1433402099 source:/home/nico/Documents/College/AED1/TP1/src/Nivel.cpp
+	"Nivel.h"
+
+1433406368 source:/home/nico/Documents/College/AED1/TP1/src/Vampiro.cpp
+	"Vampiro.h"
+
+1433407974 source:/home/nico/Documents/College/AED1/TP1/src/Flor.cpp
+	"Flor.h"
+
+1433407406 source:/home/nico/Documents/College/AED1/TP1/src/main.cpp
+	"Juego.h"
+	<iostream>
+
