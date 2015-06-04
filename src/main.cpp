@@ -20,11 +20,11 @@ int main(){
 
   Flor f(25,0,hab3);
 
-  cout << f.vidaF() << ' ' << f.cuantoPegaF() << endl;
+  cout << f << endl;
 
   Vampiro v(Caminante,50,50);
 
-  cout << v.vidaV() << ' ' << v.cuantoPegaV() << endl;
+  cout << v << endl;
 
 
   vector<VampiroEnEspera> spawn;
@@ -32,11 +32,11 @@ int main(){
 
   Nivel n(5,5,100,spawn);
 
-  cout << n.solesN() << endl;
+  cout << n << endl;
 
   n.agregarFlor(f, Posicion(2,2));
 
-  cout << n.solesN() << endl;
+  cout << n << endl;
 /*
   n.pasarTurno();
 

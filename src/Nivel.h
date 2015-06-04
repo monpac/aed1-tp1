@@ -63,6 +63,11 @@ private:
 	std::vector<VampiroEnEspera> _spawning;
 
 
+    friend std::ostream& operator<<(std::ostream& out, Nivel& n);
+    std::string fsToString();
+    std::string vsToString();
+    std::string spsToString();
+
 public:
 	Nivel();
 	Nivel(int ancho, int alto, int soles, std::vector<VampiroEnEspera>& spawninglist);

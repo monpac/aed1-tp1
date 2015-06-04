@@ -37,3 +37,21 @@ void Flor::Cargar(std::istream& is)
 {
 }
 */
+
+std::ostream& operator<<(std::ostream& out, Flor& f) {
+    std::string hs = "[ ";
+    int i = 0;
+    while (i < f.habilidadesF().size()) {
+        if (f.habilidadesF()[i] == Generar) {
+            hs += "Generar ";
+        } else if (f.habilidadesF()[i] == Atacar) {
+            hs += "Atacar ";
+        } else if (f.habilidadesF()[i] == Explotar) {
+            hs += "Explotar ";
+        }
+        i++;
+    }
+    hs += "]";
+    out << "{ F " << f.vidaF() << " " << f.cuantoPegaF() << " " << hs << " }";
+    return out;
+}

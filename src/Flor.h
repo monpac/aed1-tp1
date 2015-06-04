@@ -12,6 +12,9 @@ private:
 	std::vector<Habilidad> _habilidades;
 	int _cuantoPega;
 
+
+	friend std::ostream& operator<<(std::ostream& out, Flor& f);
+
 public:
 	Flor();
 	Flor(Vida v, int cP, std::vector<Habilidad> hs);
@@ -23,5 +26,4 @@ public:
 	void Mostrar(std::ostream& os);
 	void Guardar(std::ostream& os);
 	void Cargar(std::istream& is);
-
 };
