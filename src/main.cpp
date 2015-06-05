@@ -21,11 +21,11 @@ int main(){
 
   Flor f(25,0,hab3);
 
-  cout << f << endl;
+  //cout << f << endl;
 
   Vampiro v(Caminante,50,50);
 
-  cout << v << endl;
+  //cout << v << endl;
 
 
   vector<VampiroEnEspera> spawn;
@@ -33,13 +33,13 @@ int main(){
 
   Nivel n(5,5,100,spawn);
 
-  cout << n << endl;
+  //cout << n << endl;
 
   n.agregarFlor(f, Posicion(2,2));
 
-  cout << n << endl;
+  //cout << n << endl;
 
-  //n.pasarTurno();
+  n.pasarTurno();
 
   //cout << n.solesN() << endl;
 
@@ -54,15 +54,15 @@ int main(){
 
   Juego j(fs,vs);
 
-    cout << j << endl;
+    //cout << j << endl;
 
   //j.agregarNivel(n,0);
 
   //cout << j.muyDeExactas() << endl;
-
+/*
   ofstream ofs;
   ofs.open ("sarasa.txt", std::ofstream::out);
   j.Guardar(ofs);
   ofs.close();
-  return 0;
+  return 0;*/
 }

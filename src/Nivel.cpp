@@ -57,26 +57,281 @@ void Nivel::agregarFlor(Flor f, Posicion p) {
     _soles = solesN() - pow(2.0, cantH);
 }
 
-void Nivel::pasarTurno()
-{
+int generanSoles(std::vector<FlorEnJuego> flores) {
+    int i = 0;
+    int j = 0;
+    int x = 0;
+    int tamanoF = flores.size();
+    while(i < tamanoF) {
+        while (j < flores.at(i).flor.habilidadesF().size()) {
+            if (flores.at(i).flor.habilidadesF().at(j) == Generar) {
+                x++;
+            }
+            j++;
+        }
+        i++;
+    }
+    return x;
 }
 
-bool Nivel::terminado()
-{
-    if ((this->_vampiros.size() == 0 && this->_spawning.size() == 0) /*|| vampirosEnCasa*/) {
-        return true;
-    } else {
-        return false;
+std::vector<FlorEnJuego> floresDaniadas(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
+    int i = 0;
+    int tamanoF = flores.size();
+    int j = 0;
+    int tamanoV = vampiros.size();
+    std::vector<FlorEnJuego> floresSobrevivientes;
+    if(floresSobrevivientes.empty() == false) floresSobrevivientes.clear();
+
+    while (i < tamanoF) {
+        while (j < tamanoV) {
+            if(flores.at(i).pos.x == vampiros.at(j).pos.x && flores.at(i).pos.y == vampiros.at(j).pos.y) {
+                flores.at(i).vida = flores.at(i).vida - vampiros.at(j).vampiro.cuantoPegaV();
+            }
+            j++;
+        }
+        if(flores.at(i).vida > 0){
+            floresSobrevivientes.push_back(flores.at(i));
+        }
+        j = 0;
+        i++;
+    }
+
+    return floresSobrevivientes;
+}
+
+bool esVampiroDelantero(std::vector<VampiroEnJuego> vampiros, int posYVampiro, int v) {
+    int i = 0;
+    bool b = true;
+    int tamanoV = vampiros.size();
+    while(i < tamanoV) {
+        if(vampiros.at(i).pos.y <= posYVampiro && i != v) {
+            b = false;
+        }
+        i++;
+    }
+    return b;
+}
+
+bool noHayFlor(std::vector<FlorEnJuego> flores, VampiroEnJuego vampiro) {
+    int i = 0;
+    int tamanoF = flores.size();
+    bool choque = false;
+    while (i < tamanoF) {
+        if(flores.at(i).pos.x == vampiro.pos.x && flores.at(i).pos.y == vampiro.pos.y) {
+            choque = true;
+        }
+        i++;
     }
 }
 
-bool Nivel::obsesivoCompulsivo()
-{
+std::vector<VampiroEnJuego> vampirosDaniados(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
+    int i = 0;
+    int tamanoF = flores.size();
+    int j = 0;
+    int tamanoV = vampiros.size();
+    bool explosiva = false;
+    bool ataca = false;
+    int k = 0;
+    int l = 0;
+    Nivel n;
+    std::vector<VampiroEnJuego> vampirosSobrevivientes;
+    if(vampirosSobrevivientes.empty() == false) vampirosSobrevivientes.clear();
+
+    while (i < tamanoV) {
+        while (j < tamanoF) {
+            while (k < flores.at(j).flor.habilidadesF().size()) {
+                if (flores.at(j).flor.habilidadesF().at(k) == Atacar) {
+                    ataca = true;
+                }
+            k++;
+            }
+
+            while (l < flores.at(j).flor.habilidadesF().size()) {
+                if (flores.at(j).flor.habilidadesF().at(l) == explosiva) {
+                    explosiva = true;
+                }
+            l++;
+            }
+
+            if(flores.at(j).pos.x == vampiros.at(i).pos.x && flores.at(j).pos.y == vampiros.at(i).pos.y && explosiva) {
+                vampiros.at(i).vida = vampiros.at(i).vida - flores.at(j).flor.cuantoPegaF();
+                vampiros.at(i).pos.y = vampiros.at(i).pos.y + 2;
+            }
+
+            if(flores.at(j).pos.y <= vampiros.at(i).pos.y && ataca && esVampiroDelantero(vampiros, vampiros.at(i).pos.y, i) && !explosiva) {
+                vampiros.at(i).vida = vampiros.at(i).vida - flores.at(j).flor.cuantoPegaF();
+            }
+            k=0;
+            explosiva=false;
+            ataca=false;
+            j++;
+        }
+        j = 0;
+        if(vampiros.at(i).vampiro.claseV() == Caminante && noHayFlor(flores, vampiros.at(i))) {
+            vampiros.at(i).pos.x = vampiros.at(i).pos.x - 1;
+        } else if(vampiros.at(i).vampiro.claseV() == Desviado && noHayFlor(flores, vampiros.at(i)) && vampiros.at(i).pos.y != n.altoN() - 1) {
+            vampiros.at(i).pos.y = vampiros.at(i).pos.y + 1;
+            vampiros.at(i).pos.x = vampiros.at(i).pos.x - 1;
+
+        }
+        if(vampiros.at(i).vida > 0){
+            vampirosSobrevivientes.push_back(vampiros.at(i));
+        }
+        i++;
+    }
+
+    return vampirosSobrevivientes;
 }
 
-void Nivel::comprarSoles(int n){
+std::vector<VampiroEnJuego> vampirosSpawneados(std::vector<VampiroEnEspera> vSpaw) {
+    int i = 0;
+    int tamanoV = vSpaw.size();
+    Nivel n;
+    std::vector<VampiroEnJuego> nuevosVampiros;
+    if(nuevosVampiros.empty() == false) nuevosVampiros.clear();
+
+    while (i < tamanoV) {
+        if(vSpaw.at(i).turno == n.turnoN() + 1) {
+            nuevosVampiros.push_back(VampiroEnJuego(vSpaw.at(i).vampiro,Posicion(n.anchoN()-1,vSpaw.at(i).fila),vSpaw.at(i).vampiro.vidaV()));
+        }
+        i++;
+    }
+    return nuevosVampiros;
 }
 
+std::vector<VampiroEnJuego> vampirosCambiados(std::vector<VampiroEnJuego> danados, std::vector<VampiroEnJuego> spawneados) {
+    int i = 0;
+    int tamanoS = spawneados.size();
+    while (i < tamanoS) {
+        danados.push_back(spawneados.at(i));
+        i++;
+    }
+    return danados;
+}
+
+std::vector<VampiroEnEspera> nuevoSpawning(std::vector<VampiroEnEspera> vS) {
+    int i = 0;
+    int tamanoS = vS.size();
+    Nivel n;
+    std::vector<VampiroEnEspera> nuevosSpawn;
+    if(nuevosSpawn.empty() == false) nuevosSpawn.clear();
+
+    while (i < tamanoS) {
+        if(vS.at(i).turno /= n.turnoN() + 1) {
+            nuevosSpawn.push_back(vS.at(i));
+        }
+        i++;
+    }
+    return nuevosSpawn;
+}
+
+void Nivel::pasarTurno() {
+    _turno = turnoN() + 1;
+    _soles = solesN() + 1 + generanSoles(floresN());
+    _flores = floresDaniadas(floresN(), vampirosN());
+    _vampiros = vampirosCambiados(vampirosDaniados(floresN(), vampirosN()), vampirosSpawneados(spawningN()));
+    _spawning = nuevoSpawning(spawningN());
+
+}
+
+bool vampirosEnCasa(std::vector<VampiroEnJuego> vs) {
+    int i = 0;
+    int tamano = vs.size();
+    bool b = false;
+    while(i < tamano && b == false) {
+        if(vs.at(i).pos.y == 0) {
+            b = true;
+        } else {
+            b = false;
+        }
+        i++;
+    }
+    return b;
+}
+
+bool Nivel::terminado() {
+    bool b;
+    if ((vampirosN().size() == 0 && spawningN().size() == 0) || vampirosEnCasa(vampirosN())) {
+        b = true;
+    } else {
+        b = false;
+    }
+    return b;
+}
+
+bool yaSaliDeLaLista(int j, std::vector<int> posiciones) {
+    int i = 0;
+    bool b = false;
+    int tamanoP = posiciones.size();
+    while (i < tamanoP) {
+        if(j == posiciones.at(i)) {
+            b = true;
+        }
+        i++;
+    }
+    return b;
+}
+
+bool Nivel::obsesivoCompulsivo() {
+    int j = 0;
+    int menor = 0;
+    int tamanoF = floresN().size();
+    std::vector<FlorEnJuego> floresOrdenadas;
+    std::vector<int> posiciones;
+    int tamanoFOrd = floresOrdenadas.size();
+    while(tamanoFOrd < tamanoF) {
+        while(j < tamanoF) {
+            if(floresN().at(j).pos.y <= floresN().at(menor).pos.y && !yaSaliDeLaLista(j,posiciones)) {
+                if(floresN().at(j).pos.y != floresN().at(menor).pos.y) {
+                    menor = j;
+                } else {
+                    if(floresN().at(j).pos.x <= floresN().at(menor).pos.x) {
+                        menor = j;
+                    }
+                }
+            }
+            if(yaSaliDeLaLista(menor,posiciones)) menor++;
+            j++;
+        }
+        posiciones.push_back(menor);
+        floresOrdenadas.push_back(floresN().at(menor));
+        j = 0;
+        menor = 0;
+    }
+    int i = 0;
+    int k = 0;
+    int l = 0;
+    int b = true;
+    while(i < tamanoFOrd-1) {
+         while (k < floresOrdenadas.at(i).flor.habilidadesF().size()) {
+            if (floresOrdenadas.at(i).flor.habilidadesF().at(k) == Atacar) {
+                while(l < floresOrdenadas.at(i+1).flor.habilidadesF().size()) {
+                    if (floresOrdenadas.at(i+1).flor.habilidadesF().at(l) == Atacar) {
+                        b = false;
+                    }
+                    l++;
+                }
+            } else {
+                while(l < floresOrdenadas.at(i+1).flor.habilidadesF().size()) {
+                    if (floresOrdenadas.at(i+1).flor.habilidadesF().at(l) != Atacar) {
+                        b = false;
+                    }
+                    l++;
+                }
+            }
+            l=0;
+            k++;
+        }
+        k=0;
+        i++;
+    }
+    return b;
+}
+
+void Nivel::comprarSoles(int n) {
+    _soles = solesN() + n;
+}
+/*
 void Nivel::Mostrar(std::ostream& os)
 {
     os << *this;
@@ -133,3 +388,4 @@ std::ostream& operator<<(std::ostream& out, Nivel& n) {
     out << "}";
     return out;
 }
+*/
