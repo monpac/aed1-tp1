@@ -62,6 +62,16 @@ private:
 	std::vector<VampiroEnJuego> _vampiros;
 	std::vector<VampiroEnEspera> _spawning;
 
+	int generanSoles(std::vector<FlorEnJuego> flores);
+	std::vector<FlorEnJuego> floresDaniadas(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros);
+    bool esVampiroDelantero(std::vector<VampiroEnJuego> vampiros, int posYVampiro, int v);
+    bool noHayFlor(std::vector<FlorEnJuego> flores, VampiroEnJuego vampiro);
+    std::vector<VampiroEnJuego> vampirosDaniados(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros);
+    std::vector<VampiroEnJuego> vampirosSpawneados(std::vector<VampiroEnEspera> vSpaw);
+    std::vector<VampiroEnJuego> vampirosCambiados(std::vector<VampiroEnJuego> danados, std::vector<VampiroEnJuego> spawneados);
+    std::vector<VampiroEnEspera> nuevoSpawning(std::vector<VampiroEnEspera> vS);
+    bool vampirosEnCasa(std::vector<VampiroEnJuego> vs);
+    bool yaSaliDeLaLista(int j, std::vector<int> posiciones);
 
     friend std::ostream& operator<<(std::ostream& out, Nivel& n);
 

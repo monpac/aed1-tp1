@@ -41,19 +41,19 @@ void Juego::agregarNivel(Nivel& n,int i)
     std::vector<Nivel> nuevosNiveles;
     if (this->nivelesJ().size() == 0){
         this->nivelesJ().push_back(n);
+        _niveles = this->nivelesJ();
     } else {
-        while (k <= this->nivelesJ().size()){
+        while (k < this->nivelesJ().size()){
             if (k<i){
                 nuevosNiveles.push_back(this->nivelesJ()[k]);
+            }else if(k==i){
+                nuevosNiveles.push_back(n);
             }else{
-                if (k==i){
-                    nuevosNiveles.push_back(n);
-                }else{
-                    nuevosNiveles.push_back(this->nivelesJ()[k-1]);
-                }
+                nuevosNiveles.push_back(this->nivelesJ()[k-1]);
             }
             k++;
         }
+        _niveles = nuevosNiveles;
     }
 }
 
@@ -61,14 +61,13 @@ void Juego::jugarNivel(Nivel& n, int i){
     nivelesJ()[i] = n;
 }
 
-bool esFacil(int i){
+bool Juego::esFacil(int i){
     int k = i;
-    Juego j;
     int posMax = i;
-    while (k < j.nivelesJ().size()){
-        if ((j.nivelesJ()[k].solesN() > j.nivelesJ()[posMax].solesN()) ||
-            (j.nivelesJ()[k].solesN() == j.nivelesJ()[posMax].solesN() &&
-             j.nivelesJ()[k].floresN().size() > j.nivelesJ()[posMax].floresN().size()))
+    while (k < this->nivelesJ().size()){
+        if ((this->nivelesJ()[k].solesN() > this->nivelesJ()[posMax].solesN()) ||
+            (this->nivelesJ()[k].solesN() == this->nivelesJ()[posMax].solesN() &&
+             this->nivelesJ()[k].floresN().size() > this->nivelesJ()[posMax].floresN().size()))
              posMax = k;
         k++;
     }
@@ -94,12 +93,11 @@ void Juego::altoCheat(int n) {
     }
 }
 
-std::vector<int> nivelesGanados(){
+std::vector<int> Juego::nivelesGanados(){
     std::vector<int> resultado;
-    Juego j;
     int i = 0;
-    while (i < j.nivelesJ().size()){
-        if (j.nivelesJ()[i].vampirosN().size()== 0 && j.nivelesJ()[i].spawningN().size()== 0) resultado.push_back(i);
+    while (i < this->nivelesJ().size()){
+        if (this->nivelesJ()[i].vampirosN().size()== 0 && this->nivelesJ()[i].spawningN().size()== 0) resultado.push_back(i);
         i++;
     }
     return resultado;

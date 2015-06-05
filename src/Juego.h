@@ -18,6 +18,9 @@ private:
 	std::vector<Nivel> _niveles;
 	int _nivelActual;
 
+	bool esFacil(int i);
+	std::vector<int> nivelesGanados();
+
     friend std::ostream& operator<<(std::ostream& out, Juego& j);
 
 public:
