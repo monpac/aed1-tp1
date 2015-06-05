@@ -36,6 +36,7 @@ int main(){
   cout << n << endl;
 
   n.agregarFlor(f, Posicion(2,2));
+  n.agregarFlor(f, Posicion(1,3));
 
   cout << n << endl;
 

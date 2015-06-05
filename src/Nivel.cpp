@@ -343,6 +343,102 @@ void Nivel::Guardar(std::ostream& os)
 
 void Nivel::Cargar(std::istream& is)
 {
+    std::string s = "";
+    int i = 0;
+    int j = 0;
+    int iArray = 0;
+    std::vector<FlorEnJuego> fs;
+    std::vector<VampiroEnJuego> vs;
+    std::vector<VampiroEnEspera> sps;
+    while (s != "}" && !is.eof()) {
+        is >> s;
+        if(s == "N") {
+            i = 1;
+        }
+        if (i == 2) {
+            int ancho = atoi(s.c_str());
+            this->_ancho = ancho;
+        } else if (i == 3) {
+            int alto = atoi(s.c_str());
+            this->_alto = alto;
+        } else if (i == 4) {
+            int turno = atoi(s.c_str());
+            this->_turno = turno;
+        } else if (i == 5) {
+            int soles = atoi(s.c_str());
+            this->_soles = soles;
+        }
+        if (s == "[") {
+            iArray++;
+        } if (s == "{") {
+            j = 0;
+            if (iArray == 1) {
+                // Cargar flor
+                Flor f;
+                f.Cargar(is);
+                FlorEnJuego fN(f, Posicion(), 0);
+                fs.push_back(fN);
+            } else if (iArray == 2) {
+                // Cargar vampiro
+                Vampiro v;
+                v.Cargar(is);
+                VampiroEnJuego vN(v, Posicion(), 0);
+                vs.push_back(vN);
+            } else if (iArray == 3) {
+                // Cargar spawn
+                Vampiro v;
+                v.Cargar(is);
+                VampiroEnEspera sp(v, 0, 0);
+                sps.push_back(sp);
+            }
+        }
+        if (iArray == 1) {
+            // Cargar flor
+            if (j == 2) {
+                int x = atoi(s.c_str());
+                fs[fs.size() - 1].pos.x = x;
+            }
+            if (j == 3) {
+                int y = atoi(s.c_str());
+                fs[fs.size() - 1].pos.y = y;
+            }
+            if (j == 5) {
+                int vida = atoi(s.c_str());
+                fs[fs.size() - 1].vida = vida;
+            }
+            j++;
+        } else if (iArray == 2) {
+            // Cargar vampiro
+            if (j == 2) {
+                int x = atoi(s.c_str());
+                vs[vs.size() - 1].pos.x = x;
+            }
+            if (j == 3) {
+                int y = atoi(s.c_str());
+                vs[vs.size() - 1].pos.y = y;
+            }
+            if (j == 5) {
+                int vida = atoi(s.c_str());
+                vs[fs.size() - 1].vida = vida;
+            }
+            j++;
+        } else if (iArray == 3) {
+            // Cargar spawn
+            if (j == 1) {
+                int fila = atoi(s.c_str());
+                sps[sps.size() - 1].fila = fila;
+            }
+            if (j == 2) {
+                int turno = atoi(s.c_str());
+                sps[sps.size() - 1].turno = turno;
+            }
+            j++;
+        }
+        i++;
+    }
+    this->_flores = fs;
+    this->_vampiros = vs;
+    this->_spawning = sps;
 }
 
 std::ostream& operator<<(std::ostream& out, Nivel& n) {
