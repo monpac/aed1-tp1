@@ -36,14 +36,15 @@ int main(){
   //cout << n << endl;
 
   n.agregarFlor(f, Posicion(2,2));
+  n.agregarFlor(f, Posicion(1,3));
 
   //cout << n << endl;
 
-  // n.pasarTurno();
+  n.pasarTurno();
 
   //cout << n.solesN() << endl;
 
-  //cout << n.terminado() << ' ' << n.obsesivoCompulsivo() << endl;
+  cout << n.terminado() << ' ' << n.obsesivoCompulsivo() << endl;
 
 
   vector<Flor> fs;
