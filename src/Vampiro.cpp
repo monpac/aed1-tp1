@@ -28,22 +28,16 @@ int Vampiro::cuantoPegaV()
 }
 
 void Vampiro::Mostrar(std::ostream& os) {
-  os << this;
+    os << *this;
 }
 
 void Vampiro::Guardar(std::ostream& os) {
-    //{ V Desviado 50 8 }
-    //"{ V ", su clase de vampiro, " ", su vida, " ", su cuanto pega y " }"
-    os << "{ V ";
-    os << claseV() << " ";
-    os << vidaV() << " ";
-    os << cuantoPegaV() << " }";
+    os << *this;
 }
-/*
+
 void Vampiro::Cargar(std::istream& is) {
 
 }
-*/
 
 std::ostream& operator<<(std::ostream& out, Vampiro& v) {
     std::string clase = "";

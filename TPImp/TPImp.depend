@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1433444470 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.cpp
+1433488337 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.cpp
 	"Flor.h"
 
 1433444470 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Flor.h
@@ -11,10 +11,10 @@
 1430937003 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Types.h
 	<tuple>
 
-1433277401 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
+1433488337 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
 	"Juego.h"
 
-1432239949 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.h
+1433488337 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.h
 	<vector>
 	<iostream>
 	<fstream>
@@ -29,7 +29,7 @@
 	<iostream>
 	<string>
 
-1433444470 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.h
+1433488337 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.h
 	<tuple>
 	<vector>
 	<iostream>
@@ -41,17 +41,18 @@
 1433281860 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.cpp
 	"Nivel.h"
 
-1433444470 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/main.cpp
+1433488337 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/main.cpp
 	"Juego.h"
 	<iostream>
+	<fstream>
 
 1433444470 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Vampiro.cpp
 	"Vampiro.h"
 
-1433402099 source:/home/nico/Documents/College/AED1/TP1/src/Juego.cpp
+1433461677 source:/home/nico/Documents/College/AED1/TP1/src/Juego.cpp
 	"Juego.h"
 
-1433402099 /home/nico/Documents/College/AED1/TP1/src/Juego.h
+1433454587 /home/nico/Documents/College/AED1/TP1/src/Juego.h
 	<vector>
 	<iostream>
 	<fstream>
@@ -75,7 +76,7 @@
 	<iostream>
 	<string>
 
-1433407909 /home/nico/Documents/College/AED1/TP1/src/Nivel.h
+1433453479 /home/nico/Documents/College/AED1/TP1/src/Nivel.h
 	<tuple>
 	<vector>
 	<iostream>
@@ -84,16 +85,17 @@
 	"Flor.h"
 	"Vampiro.h"
 
-1433402099 source:/home/nico/Documents/College/AED1/TP1/src/Nivel.cpp
+1433461812 source:/home/nico/Documents/College/AED1/TP1/src/Nivel.cpp
 	"Nivel.h"
 
-1433406368 source:/home/nico/Documents/College/AED1/TP1/src/Vampiro.cpp
+1433461822 source:/home/nico/Documents/College/AED1/TP1/src/Vampiro.cpp
 	"Vampiro.h"
 
-1433407974 source:/home/nico/Documents/College/AED1/TP1/src/Flor.cpp
+1433461780 source:/home/nico/Documents/College/AED1/TP1/src/Flor.cpp
 	"Flor.h"
 
-1433407406 source:/home/nico/Documents/College/AED1/TP1/src/main.cpp
+1433461114 source:/home/nico/Documents/College/AED1/TP1/src/main.cpp
 	"Juego.h"
 	<iostream>
+	<fstream>
 

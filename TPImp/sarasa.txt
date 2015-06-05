@@ -1,0 +1,1 @@
+{ J [ { F 25 0 [ Explotar Generar ] } ] [ { V Caminante  50 50 } ] [ ] }

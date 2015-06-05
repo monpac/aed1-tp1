@@ -18,6 +18,8 @@ private:
 	std::vector<Nivel> _niveles;
 	int _nivelActual;
 
+    friend std::ostream& operator<<(std::ostream& out, Juego& j);
+
 public:
 
 	Juego();
