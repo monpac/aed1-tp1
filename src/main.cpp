@@ -55,7 +55,7 @@ int main(){
 
   Juego j(fs,vs);
 
-    cout << j << endl;
+  cout << j << endl;
 
   j.agregarNivel(n,0);
 
