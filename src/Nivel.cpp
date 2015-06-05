@@ -272,11 +272,10 @@ bool Nivel::yaSaliDeLaLista(int j, std::vector<int> posiciones) {
 bool Nivel::obsesivoCompulsivo() {
     int j = 0;
     int menor = 0;
-    int tamanoF = floresN().size();
+    int tamanoF = this->floresN().size();
     std::vector<FlorEnJuego> floresOrdenadas;
     std::vector<int> posiciones;
-    int tamanoFOrd = floresOrdenadas.size();
-    while(tamanoFOrd < tamanoF) {
+    while(floresOrdenadas.size() < tamanoF) {
         while(j < tamanoF) {
             if(floresN().at(j).pos.y <= floresN().at(menor).pos.y && !yaSaliDeLaLista(j,posiciones)) {
                 if(floresN().at(j).pos.y != floresN().at(menor).pos.y) {
@@ -290,16 +289,19 @@ bool Nivel::obsesivoCompulsivo() {
             if(yaSaliDeLaLista(menor,posiciones)) menor++;
             j++;
         }
+
+        if(menor < floresN().size() ) {
         posiciones.push_back(menor);
         floresOrdenadas.push_back(floresN().at(menor));
         j = 0;
         menor = 0;
+        }
     }
     int i = 0;
     int k = 0;
     int l = 0;
     int b = true;
-    while(i < tamanoFOrd-1) {
+    while(i < floresOrdenadas.size()-1) {
          while (k < floresOrdenadas.at(i).flor.habilidadesF().size()) {
             if (floresOrdenadas.at(i).flor.habilidadesF().at(k) == Atacar) {
                 while(l < floresOrdenadas.at(i+1).flor.habilidadesF().size()) {

@@ -11,7 +11,7 @@
 1430937003 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Types.h
 	<tuple>
 
-1433524597 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
+1433525478 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.cpp
 	"Juego.h"
 
 1433524597 /home/monas/Documents/Algo I/TP2/aed1-tp1/src/Juego.h
@@ -38,10 +38,10 @@
 	"Flor.h"
 	"Vampiro.h"
 
-1433525366 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.cpp
+1433528646 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/Nivel.cpp
 	"Nivel.h"
 
-1433524597 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/main.cpp
+1433526533 source:/home/monas/Documents/Algo I/TP2/aed1-tp1/src/main.cpp
 	"Juego.h"
 	<iostream>
 	<fstream>
