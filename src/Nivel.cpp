@@ -1,10 +1,9 @@
 #include "Nivel.h"
 
-/*
 Nivel::Nivel()
 {
 }
-*/
+
 Nivel::Nivel(int ancho, int alto, int soles, std::vector<VampiroEnEspera>& spawninglist) {
     _ancho = ancho;
     _alto = alto;
