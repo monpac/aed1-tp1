@@ -331,7 +331,7 @@ bool Nivel::obsesivoCompulsivo() {
 void Nivel::comprarSoles(int n) {
     _soles = solesN() + n;
 }
-/*
+
 void Nivel::Mostrar(std::ostream& os)
 {
     os << *this;
@@ -388,4 +388,3 @@ std::ostream& operator<<(std::ostream& out, Nivel& n) {
     out << "}";
     return out;
 }
-*/

@@ -19,7 +19,7 @@ int main(){
   hab3.push_back(Explotar);
   hab3.push_back(Generar);
 
-  Flor f(25,0,hab3);
+  Flor f(25,0,hab2);
 
   //cout << f << endl;
 
@@ -56,13 +56,22 @@ int main(){
 
     //cout << j << endl;
 
-  //j.agregarNivel(n,0);
+  j.agregarNivel(n,0);
 
   //cout << j.muyDeExactas() << endl;
-/*
+
   ofstream ofs;
   ofs.open ("sarasa.txt", std::ofstream::out);
   j.Guardar(ofs);
   ofs.close();
-  return 0;*/
+
+  Juego jGuardado;
+  fstream ifs;
+  ifs.open("sarasa.txt");
+  jGuardado.Cargar(ifs);
+  ifs.close();
+
+  cout << jGuardado << endl;
+
+  return 0;
 }

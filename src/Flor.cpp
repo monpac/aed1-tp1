@@ -37,7 +37,30 @@ void Flor::Guardar(std::ostream& os)
 
 void Flor::Cargar(std::istream& is)
 {
-
+    std::string s = "";
+    int i = 0;
+    std::vector<Habilidad> hab;
+    while (s != "}" && !is.eof()) {
+        is >> s;
+        if(s == "F") {
+            i = 1;
+        }
+        if (i == 2) {
+            int vida = atoi(s.c_str());
+            this->_vida = vida;
+        } else if (i == 3) {
+            int cP = atoi(s.c_str());
+            this->_cuantoPega = cP;
+        } else if (s == "Generar") {
+            hab.push_back(Generar);
+        } else if (s == "Atacar") {
+            hab.push_back(Atacar);
+        } else if (s == "Explotar") {
+            hab.push_back(Explotar);
+        }
+        i++;
+    }
+    this->_habilidades = hab;
 }
 
 
