@@ -57,7 +57,7 @@ void Nivel::agregarFlor(Flor f, Posicion p) {
     _soles = solesN() - pow(2.0, cantH);
 }
 
-int generanSoles(std::vector<FlorEnJuego> flores) {
+int Nivel::generanSoles(std::vector<FlorEnJuego> flores) {
     int i = 0;
     int j = 0;
     int x = 0;
@@ -74,7 +74,7 @@ int generanSoles(std::vector<FlorEnJuego> flores) {
     return x;
 }
 
-std::vector<FlorEnJuego> floresDaniadas(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
+std::vector<FlorEnJuego> Nivel::floresDaniadas(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
     int i = 0;
     int tamanoF = flores.size();
     int j = 0;
@@ -99,7 +99,7 @@ std::vector<FlorEnJuego> floresDaniadas(std::vector<FlorEnJuego> flores, std::ve
     return floresSobrevivientes;
 }
 
-bool esVampiroDelantero(std::vector<VampiroEnJuego> vampiros, int posYVampiro, int v) {
+bool Nivel::esVampiroDelantero(std::vector<VampiroEnJuego> vampiros, int posYVampiro, int v) {
     int i = 0;
     bool b = true;
     int tamanoV = vampiros.size();
@@ -112,7 +112,7 @@ bool esVampiroDelantero(std::vector<VampiroEnJuego> vampiros, int posYVampiro, i
     return b;
 }
 
-bool noHayFlor(std::vector<FlorEnJuego> flores, VampiroEnJuego vampiro) {
+bool Nivel::noHayFlor(std::vector<FlorEnJuego> flores, VampiroEnJuego vampiro) {
     int i = 0;
     int tamanoF = flores.size();
     bool choque = false;
@@ -124,7 +124,7 @@ bool noHayFlor(std::vector<FlorEnJuego> flores, VampiroEnJuego vampiro) {
     }
 }
 
-std::vector<VampiroEnJuego> vampirosDaniados(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
+std::vector<VampiroEnJuego> Nivel::vampirosDaniados(std::vector<FlorEnJuego> flores, std::vector<VampiroEnJuego> vampiros) {
     int i = 0;
     int tamanoF = flores.size();
     int j = 0;
@@ -183,7 +183,7 @@ std::vector<VampiroEnJuego> vampirosDaniados(std::vector<FlorEnJuego> flores, st
     return vampirosSobrevivientes;
 }
 
-std::vector<VampiroEnJuego> vampirosSpawneados(std::vector<VampiroEnEspera> vSpaw) {
+std::vector<VampiroEnJuego> Nivel::vampirosSpawneados(std::vector<VampiroEnEspera> vSpaw) {
     int i = 0;
     int tamanoV = vSpaw.size();
     Nivel n;
@@ -199,7 +199,7 @@ std::vector<VampiroEnJuego> vampirosSpawneados(std::vector<VampiroEnEspera> vSpa
     return nuevosVampiros;
 }
 
-std::vector<VampiroEnJuego> vampirosCambiados(std::vector<VampiroEnJuego> danados, std::vector<VampiroEnJuego> spawneados) {
+std::vector<VampiroEnJuego> Nivel::vampirosCambiados(std::vector<VampiroEnJuego> danados, std::vector<VampiroEnJuego> spawneados) {
     int i = 0;
     int tamanoS = spawneados.size();
     while (i < tamanoS) {
@@ -209,7 +209,7 @@ std::vector<VampiroEnJuego> vampirosCambiados(std::vector<VampiroEnJuego> danado
     return danados;
 }
 
-std::vector<VampiroEnEspera> nuevoSpawning(std::vector<VampiroEnEspera> vS) {
+std::vector<VampiroEnEspera> Nivel::nuevoSpawning(std::vector<VampiroEnEspera> vS) {
     int i = 0;
     int tamanoS = vS.size();
     Nivel n;
@@ -234,7 +234,7 @@ void Nivel::pasarTurno() {
 
 }
 
-bool vampirosEnCasa(std::vector<VampiroEnJuego> vs) {
+bool Nivel::vampirosEnCasa(std::vector<VampiroEnJuego> vs) {
     int i = 0;
     int tamano = vs.size();
     bool b = false;
@@ -259,7 +259,7 @@ bool Nivel::terminado() {
     return b;
 }
 
-bool yaSaliDeLaLista(int j, std::vector<int> posiciones) {
+bool Nivel::yaSaliDeLaLista(int j, std::vector<int> posiciones) {
     int i = 0;
     bool b = false;
     int tamanoP = posiciones.size();
