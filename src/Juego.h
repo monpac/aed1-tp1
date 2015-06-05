@@ -30,7 +30,7 @@ public:
 	std::vector<Vampiro>& vampirosJ();
 	std::vector<Nivel>& nivelesJ();
 	void agregarNivel(Nivel& n, int i);
-  void jugarNivel(Nivel& n, int i);
+    void jugarNivel(Nivel& n, int i);
 	std::vector<Nivel> estosSaleFacil();
 	void altoCheat(int n);
 	bool muyDeExactas();

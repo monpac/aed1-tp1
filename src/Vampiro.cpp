@@ -36,15 +36,36 @@ void Vampiro::Guardar(std::ostream& os) {
 }
 
 void Vampiro::Cargar(std::istream& is) {
-
+    std::string s = "";
+    int i = 0;
+    while (!is.eof() && s != "}") {
+        is >> s;
+        if(s == "V") {
+            i = 1;
+        }
+        if (i == 2) {
+            if (s == "Caminante") {
+                this->_clase = Caminante;
+            } else if (s == "Desviado") {
+                this->_clase = Desviado;
+            }
+        } else if (i == 3) {
+            int vida = atoi(s.c_str());
+            this->_vida = vida;
+        } else if (i == 4) {
+            int cP = atoi(s.c_str());
+            this->_cuantoPega = cP;
+        }
+        i++;
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, Vampiro& v) {
     std::string clase = "";
     if (v.claseV() == Caminante) {
-        clase = "Caminante ";
+        clase = "Caminante";
     } else if (v.claseV() == Desviado) {
-        clase = "Desviado ";
+        clase = "Desviado";
     }
     out << "{ V " << clase << " " << v.vidaV() << " " << v.cuantoPegaV() << " }";
     return out;

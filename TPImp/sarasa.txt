@@ -1,1 +1,1 @@
-{ J [ { F 25 0 [ Explotar Generar ] } ] [ { V Caminante  50 50 } ] [ ] }
+{ J [ { F 25 0 [ Atacar Generar ] } ] [ { V Caminante 50 50 } ] [ { N 5 5 1 98 [ ( { F 25 0 [ Atacar Generar ] } ( 2 2 ) 25 ) ] [ ] [ ] } ] }

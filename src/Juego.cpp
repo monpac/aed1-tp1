@@ -123,19 +123,41 @@ bool Juego::muyDeExactas() {
     return result;
 }
 
-/*
-void Juego::Mostrar(std::ostream& os)
-{
+
+void Juego::Mostrar(std::ostream& os) {
     os << *this;
 }
 
-void Juego::Guardar(std::ostream& os)
-{
+void Juego::Guardar(std::ostream& os) {
     os << *this;
 }
 
-void Juego::Cargar(std::iostream& is)
-{
+void Juego::Cargar(std::iostream& is) {
+    std::string s;
+    int iArray = 0;
+    while (!is.eof()) {
+        is >> s;
+        if (s == "[") {
+            iArray++;
+        } if (s == "{") {
+            if (iArray == 1) {
+                // Cargar flor
+                Flor f;
+                f.Cargar(is);
+                this->_flores.push_back(f);
+            } else if (iArray == 2) {
+                // Cargar vampiro
+                Vampiro v;
+                v.Cargar(is);
+                this->_vampiros.push_back(v);
+            } else if (iArray == 3) {
+                // Cargar nivel
+                Nivel n;
+                n.Cargar(is);
+                this->_niveles.push_back(n);
+            }
+        }
+    }
 }
 
 std::ostream& operator<<(std::ostream& out, Juego& j) {
@@ -167,4 +189,3 @@ std::ostream& operator<<(std::ostream& out, Juego& j) {
     out << "}";
     return out;
 }
-*/
