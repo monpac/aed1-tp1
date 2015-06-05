@@ -63,12 +63,11 @@ void Juego::jugarNivel(Nivel& n, int i){
 
 bool Juego::esFacil(int i){
     int k = i;
-    Juego j;
     int posMax = i;
-    while (k < j.nivelesJ().size()){
-        if ((j.nivelesJ()[k].solesN() > j.nivelesJ()[posMax].solesN()) ||
-            (j.nivelesJ()[k].solesN() == j.nivelesJ()[posMax].solesN() &&
-             j.nivelesJ()[k].floresN().size() > j.nivelesJ()[posMax].floresN().size()))
+    while (k < this->nivelesJ().size()){
+        if ((this->nivelesJ()[k].solesN() > this->nivelesJ()[posMax].solesN()) ||
+            (this->nivelesJ()[k].solesN() == this->nivelesJ()[posMax].solesN() &&
+             this->nivelesJ()[k].floresN().size() > this->nivelesJ()[posMax].floresN().size()))
              posMax = k;
         k++;
     }
@@ -96,10 +95,9 @@ void Juego::altoCheat(int n) {
 
 std::vector<int> Juego::nivelesGanados(){
     std::vector<int> resultado;
-    Juego j;
     int i = 0;
-    while (i < j.nivelesJ().size()){
-        if (j.nivelesJ()[i].vampirosN().size()== 0 && j.nivelesJ()[i].spawningN().size()== 0) resultado.push_back(i);
+    while (i < this->nivelesJ().size()){
+        if (this->nivelesJ()[i].vampirosN().size()== 0 && this->nivelesJ()[i].spawningN().size()== 0) resultado.push_back(i);
         i++;
     }
     return resultado;

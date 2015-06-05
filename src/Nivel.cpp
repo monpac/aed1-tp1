@@ -133,7 +133,6 @@ std::vector<VampiroEnJuego> Nivel::vampirosDaniados(std::vector<FlorEnJuego> flo
     bool ataca = false;
     int k = 0;
     int l = 0;
-    Nivel n;
     std::vector<VampiroEnJuego> vampirosSobrevivientes;
     if(vampirosSobrevivientes.empty() == false) vampirosSobrevivientes.clear();
 
@@ -169,7 +168,7 @@ std::vector<VampiroEnJuego> Nivel::vampirosDaniados(std::vector<FlorEnJuego> flo
         j = 0;
         if(vampiros.at(i).vampiro.claseV() == Caminante && noHayFlor(flores, vampiros.at(i))) {
             vampiros.at(i).pos.x = vampiros.at(i).pos.x - 1;
-        } else if(vampiros.at(i).vampiro.claseV() == Desviado && noHayFlor(flores, vampiros.at(i)) && vampiros.at(i).pos.y != n.altoN() - 1) {
+        } else if(vampiros.at(i).vampiro.claseV() == Desviado && noHayFlor(flores, vampiros.at(i)) && vampiros.at(i).pos.y != this->altoN() - 1) {
             vampiros.at(i).pos.y = vampiros.at(i).pos.y + 1;
             vampiros.at(i).pos.x = vampiros.at(i).pos.x - 1;
 
@@ -186,13 +185,12 @@ std::vector<VampiroEnJuego> Nivel::vampirosDaniados(std::vector<FlorEnJuego> flo
 std::vector<VampiroEnJuego> Nivel::vampirosSpawneados(std::vector<VampiroEnEspera> vSpaw) {
     int i = 0;
     int tamanoV = vSpaw.size();
-    Nivel n;
     std::vector<VampiroEnJuego> nuevosVampiros;
     if(nuevosVampiros.empty() == false) nuevosVampiros.clear();
 
     while (i < tamanoV) {
-        if(vSpaw.at(i).turno == n.turnoN() + 1) {
-            nuevosVampiros.push_back(VampiroEnJuego(vSpaw.at(i).vampiro,Posicion(n.anchoN()-1,vSpaw.at(i).fila),vSpaw.at(i).vampiro.vidaV()));
+        if(vSpaw.at(i).turno == this->turnoN() + 1) {
+            nuevosVampiros.push_back(VampiroEnJuego(vSpaw.at(i).vampiro,Posicion(this->anchoN()-1,vSpaw.at(i).fila),vSpaw.at(i).vampiro.vidaV()));
         }
         i++;
     }
@@ -212,12 +210,11 @@ std::vector<VampiroEnJuego> Nivel::vampirosCambiados(std::vector<VampiroEnJuego>
 std::vector<VampiroEnEspera> Nivel::nuevoSpawning(std::vector<VampiroEnEspera> vS) {
     int i = 0;
     int tamanoS = vS.size();
-    Nivel n;
     std::vector<VampiroEnEspera> nuevosSpawn;
     if(nuevosSpawn.empty() == false) nuevosSpawn.clear();
 
     while (i < tamanoS) {
-        if(vS.at(i).turno /= n.turnoN() + 1) {
+        if(vS.at(i).turno /= this->turnoN() + 1) {
             nuevosSpawn.push_back(vS.at(i));
         }
         i++;
