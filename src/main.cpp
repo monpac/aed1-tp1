@@ -1,5 +1,6 @@
 #include "Juego.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -58,4 +59,10 @@ int main(){
   //j.agregarNivel(n,0);
 
   //cout << j.muyDeExactas() << endl;
+
+  ofstream ofs;
+  ofs.open ("sarasa.txt", std::ofstream::out);
+  j.Guardar(ofs);
+  ofs.close();
+  return 0;
 }

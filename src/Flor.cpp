@@ -24,19 +24,22 @@ std::vector<Habilidad>& Flor::habilidadesF()
 {
     return this->_habilidades;
 }
-/*
+
 void Flor::Mostrar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Flor::Guardar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Flor::Cargar(std::istream& is)
 {
+
 }
-*/
+
 
 std::ostream& operator<<(std::ostream& out, Flor& f) {
     std::string hs = "[ ";

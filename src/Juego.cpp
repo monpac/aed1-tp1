@@ -56,10 +56,12 @@ bool Juego::muyDeExactas()
 
 void Juego::Mostrar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Juego::Guardar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Juego::Cargar(std::iostream& is)

@@ -57,11 +57,11 @@ void Nivel::agregarFlor(Flor f, Posicion p) {
     double cantH = f.habilidadesF().size();
     _soles = solesN() - pow(2.0, cantH);
 }
-/*
+
 void Nivel::pasarTurno()
 {
 }
-*/
+
 bool Nivel::terminado()
 {
     if ((this->_vampiros.size() == 0 && this->_spawning.size() == 0) /*|| vampirosEnCasa*/) {
@@ -70,7 +70,6 @@ bool Nivel::terminado()
         return false;
     }
 }
-/*
 
 bool Nivel::obsesivoCompulsivo()
 {
@@ -81,16 +80,17 @@ void Nivel::comprarSoles(int n){
 
 void Nivel::Mostrar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Nivel::Guardar(std::ostream& os)
 {
+    os << *this;
 }
 
 void Nivel::Cargar(std::istream& is)
 {
 }
-*/
 
 std::ostream& operator<<(std::ostream& out, Nivel& n) {
     out << "{ N " << n.anchoN() << " " << n.altoN() << " " << n.turnoN() << " "
