@@ -39,7 +39,7 @@ int main(){
 
   //cout << n << endl;
 
-  n.pasarTurno();
+  // n.pasarTurno();
 
   //cout << n.solesN() << endl;
 
